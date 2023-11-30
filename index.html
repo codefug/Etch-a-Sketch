@@ -16,10 +16,13 @@
 <body>
     <div id="headContent" class="largecomponent">
         <h1>SKETCH</h1>
-        <select name="languageSetting" id="lan">
-            <option value="ko" selected>한국어</option>
-            <option value="en">영어</option>
-        </select>
+        <div id="lanContainer">
+            <label for="lan">LanguageSetting</label>
+            <select name="languageSetting" id="lan">
+                <option value="en">English</option>
+                <option value="ko">한국어</option>
+            </select>
+        </div>
     </div>
     <div id="bodyContent">
         <div id="bodyLeft">
@@ -27,6 +30,7 @@
             <button id="random" class="niceButton">RANDOM</button>
             <button id="eraser" class="niceButton">ERASER</button>
             <button id="clear" class="niceButton">CLEAR</button>
+            <button id="border" class="niceButton">BORDER</button>
             <div id="colorsetting">
                 <label for="colorslider">Background-color</label>
                 <input type="range" min="1" max="100" value="50" id="colorSlider">

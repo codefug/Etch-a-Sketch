@@ -21,12 +21,28 @@
 7. 사각형
     7-1. black to white 말고 각 작업이 RGB값을 무작위로 꺼내야 한다.
     7-2. 점진적인 어두움을 주자. 완전히 검은색 정사각형은 10번 상호작용 이후에 되도록 --> */
+/* js 활용 css */
+.newNode{
+    background-color: white;
+    flex:auto;
+}
+.newNodeContainer{
+    display: flex;
+    flex:auto;
+}
+.border{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
 
 /* 전체 설정 */
 body{
     background-color: rgba(201, 160, 160, 0.671);
     color: white;
     margin: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .largecomponent{
@@ -42,17 +58,22 @@ body{
     font-size: large;
     font-weight: bold;
     background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* headContent */
 #headContent{
+    align-self: stretch;
     display: flex;
     flex-direction: column;
 }
-#lan{
-    align-self: end;
+#lanContainer{
+    align-self: center;
     margin-right: 10px;
-    width: 100px;
+    display: flex;
+    gap: 30px;
 }
 h1{
     font-size: 60px;
@@ -61,18 +82,22 @@ h1{
 /* bodyContent */
 #bodyContent{
     display: flex;
-    border-radius: 10px;
+    border-radius: 15px;
     border: 1px solid white;
-    height:80vw;
+    height:80vh;
     background-color: brown;
+    padding: 2.5px 30px;
 }
 
 /* bodyContent left*/
 #bodyLeft{
     display: flex;
-    width:20vw;
+    width:15vw;
     flex-direction: column;
     justify-content: space-evenly;
+    border-radius: 10px 0 0 10px;
+    padding-right: 30px;
+    border-right: 1px solid black;
 }
 
 #colorSlider{
@@ -93,23 +118,27 @@ h1{
 /* bodyContent Right */
 #bodyRight{
     display: flex;
-    width:80vw;
+    height:80vh;
+    flex-basis:content;
     flex-direction: column;
     justify-content: space-evenly;
+    padding: 2.5px 30px;
 }
 
 #palette{
     align-self: center;
-    height: 65vw;
-    width: 65vw;
+    height: 70vh;
+    width: 70vh;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 #set{
     font-size: 100%;
     align-self: center;
     width: 10vw;
-    height: 10vw;
+    height: 5vh;
 }
 
 /* footerContent 완료 */
