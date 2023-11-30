@@ -3,7 +3,10 @@ const palette = document.querySelector('#palette'); //palette
 const setButton = document.querySelector('#set'); //set
 const languageSetting = document.querySelector("#lanContainer"); //languageSetting
 const h1 = document.querySelector('h1'); //h1
+const colorCircle = document.querySelector("#colorCircle");
+const hiddenColorCircle = document.querySelector("#hiddenColorCircle");
 let selectedLanguage=1;
+  
 // 0. 언어 팩
 
 const lanPack = [
@@ -49,10 +52,10 @@ languageSetting.addEventListener('change', (event) => {
 function promptFunction(){
     if (selectedLanguage==1){
         let n=prompt(`Please specify the size of the desired grid in the format 'n*n'(which means n*n)
-        you can put it just one number. (less than or equal to 64)`);
+        you can put it just the number. (less than or equal to 64)`);
         return n;
     }else{
-        let n=prompt(`원하시는 그리드의 크기를 말해주세요 'n*n' 한글자만 해주셔도 됩니다. ('n*n' 형식)
+        let n=prompt(`원하시는 그리드의 크기를 말해주세요 'n*n' 숫자만 적어주셔도 됩니다. ('n*n' 형식)
         (64이하 번호 적어주세요.)`);
         return n;
     }
@@ -65,6 +68,7 @@ setButton.addEventListener('click',()=>{
     if (n==null || n==NaN){
         alert('64이하의 번호만 입력해주세요!')
     }else{
+        palette.innerHTML="";
         for (let i=0;i<n;i++){
             let newNodeContainer=document.createElement('div');
             newNodeContainer.classList.add('newNodeContainer');
@@ -80,5 +84,10 @@ setButton.addEventListener('click',()=>{
 // palette
 
 // 3. bodyLeft
+colorCircle.addEventListener('click',()=>{hiddenColorCircle.click()});  
+// bodyLeft delegate : colorCircle, random, eraser, clear, colorsetting, border
+bodyLeft.addEventListener('click',(event)=>{
+    
+})
 
-// bodyLeft delegate : colorCircle, random, eraser, clear, colorsetting
+//let randomColor = Math.floor(Math.random()*16777215).toString(16);
