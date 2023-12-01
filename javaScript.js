@@ -130,11 +130,11 @@ palette.addEventListener('mouseover', (event) => {
         palettehover(target);
     }
 })
-palette.addEventListener('mouseleave', (event)=>{drawPalette=false;});
+palette.addEventListener('mouseleave', (event) => { drawPalette = false; });
 
 function palettehover(target) {
     if (!eraserSetting) {
-        target.style.backgroundColor = selectedColor;
+            target.style.backgroundColor = selectedColor;
     } else {
         target.style.backgroundColor = '';
     }
@@ -150,8 +150,13 @@ function randomColor() {
     colorCircle.setAttribute('style', `background-color: ${selectedColor}`);
 }
 
-function eraserPalette() {
+function eraserPalette(target) {
     eraserSetting = !eraserSetting;
+    if (eraserSetting) {
+        target.classList.add('pressButton');
+    } else {
+        target.classList.remove('pressButton');
+    }
 }
 
 function clearPalette() {
@@ -174,10 +179,8 @@ function borderPalette() {
     }
 }
 
-function changeBackGroundColor(event){
-    console.log(event.target.value)
-    console.log('#'+(Number(event.target.value).toString(16)).padStart(6,'0'));
-    document.body.setAttribute('style',`background:#${(Number(event.target.value)).toString(16).padStart(6,'0')}`)
+function changeBackGroundColor(event) {
+    document.body.setAttribute('style', `background:#${(Number(event.target.value)).toString(16).padStart(6, '0')}`)
 }
 // bodyLeft delegate : colorCircle, random, eraser, clear, colorsetting, border
 
@@ -194,7 +197,7 @@ bodyLeft.addEventListener('click', (event) => {
             randomColor();
             break;
         case 'eraser':
-            eraserPalette();
+            eraserPalette(target);
             break;
         case 'clear':
             clearPalette();
@@ -207,4 +210,4 @@ bodyLeft.addEventListener('click', (event) => {
 
 // bodyLeft : background-color Setting colorSlider
 
-colorSlider.addEventListener('change',changeBackGroundColor);
+colorSlider.addEventListener('change', changeBackGroundColor);

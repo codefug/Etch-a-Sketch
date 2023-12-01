@@ -25,24 +25,28 @@
         </div>
     </div>
     <div id="bodyContent">
-        <div id="bodyLeft">
-            <div id="colorCircle">
-                <input type="color" id="hiddenColorCircle" name="selectedcolor" value="#000000" />
+        <div class="side"></div>
+        <div id="bodyContainer">
+            <div id="bodyLeft">
+                <div id="colorCircle">
+                    <input type="color" id="hiddenColorCircle" name="selectedcolor" value="#00000000" />
+                </div>
+                <button id="random" class="niceButton">RANDOM</button>
+                <button id="eraser" class="niceButton" disabled>ERASER</button>
+                <button id="clear" class="niceButton" disabled>CLEAR</button>
+                <button id="border" class="niceButton" disabled>BORDER</button>
+                <div id="colorsetting">
+                    <label for="colorSlider">Background-color</label>
+                    <input type="range" min=0 max=4294967244 value="2147483622" id="colorSlider">
+                </div>
             </div>
-            <button id="random" class="niceButton">RANDOM</button>
-            <button id="eraser" class="niceButton" disabled>ERASER</button>
-            <button id="clear" class="niceButton" disabled>CLEAR</button>
-            <button id="border" class="niceButton" disabled>BORDER</button>
-            <div id="colorsetting">
-                <label for="colorSlider">Background-color</label>
-                <input type="range" min=0 max=16777215 value="0" id="colorSlider">
+            <div id="bodyRight">
+                <div id="palette">
+                </div>
+                <button id="set" class="niceButton">SET</button>
             </div>
         </div>
-        <div id="bodyRight">
-            <div id="palette">
-            </div>
-            <button id="set" class="niceButton">SET</button>
-        </div>
+        <div class="side"></div>
     </div>
     <div id="footerContent" class="largecomponent">
     </div>
