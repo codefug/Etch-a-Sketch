@@ -24,8 +24,12 @@ const random = document.querySelector("#random");
 const eraser = document.querySelector("#eraser");
 const clear = document.querySelector("#clear");
 const border = document.querySelector("#border");
-let borderSetting=0;
+const colorSlider = document.querySelector('#colorSlider');
+let selectedColor = '#000000';
+let borderSetting = 0;
 let selectedLanguage = 1;
+let eraserSetting = false;
+let drawPalette = false;
 
 // 0. 언어 팩
 
@@ -83,9 +87,10 @@ function promptFunction() {
 // set
 setButton.addEventListener('click', () => {
     let n = promptFunction();
-    n = Number(n.split('*')[0]);
-    console.log(typeof (n));
-    if (n == null || n == NaN) {
+    if (n != null) {
+        n = Number(n.split('*')[0]);
+    } else { return; };
+    if (n == NaN || n > 64) {
         alert('64이하의 번호만 입력해주세요!')
     } else {
         palette.innerHTML = "";
@@ -99,7 +104,7 @@ setButton.addEventListener('click', () => {
             }
             palette.appendChild(newNodeContainer);
         }
-        if (borderSetting==1){
+        if (borderSetting == 1) {
             borderPalette();
         }
         eraser.disabled = false;
@@ -108,22 +113,57 @@ setButton.addEventListener('click', () => {
     }
 })
 // palette
+// bodyLeft delegate : colorCircle, random, eraser, clear, colorsetting, border
+palette.addEventListener('mousedown', (event) => {
+    drawPalette = true; let target = event.target;
+    if (target.classList.contains('newNode') && drawPalette) {
+        palettehover(target);
+    }
+});
+
+palette.addEventListener('mouseup', () => {
+    drawPalette = false;
+    console.log('mouseup')
+});
+palette.addEventListener('mouseover', (event) => {
+    let target = event.target;
+    if (target.classList.contains('newNode') && drawPalette) {
+        palettehover(target);
+    }
+})
+
+function palettehover(target) {
+    if (!eraserSetting) {
+        target.style.backgroundColor = selectedColor;
+    } else {
+        target.style.backgroundColor = '';
+    }
+}
 
 // 3. bodyLeft
-function randomColor() {
 
+// bodyLeft function
+
+function randomColor() {
+    selectedColor = '#' + (Math.floor(Math.random() * 0xFFFFFF).toString(16)).padStart(6, '0');
+    hiddenColorCircle.value = selectedColor;
+    colorCircle.setAttribute('style', `background-color: ${selectedColor}`);
 }
+
 function eraserPalette() {
+    eraserSetting = !eraserSetting;
 }
+
 function clearPalette() {
     palette.innerHTML = "";
     eraser.disabled = true;
     clear.disabled = true;
     border.disabled = true;
 }
+
 function borderPalette() {
     let newNode = document.querySelectorAll('.newNode');
-    borderSetting=1;
+    borderSetting = 1;
     for (nN of newNode) {
         if (nN.classList.contains('border')) {
             nN.classList.remove('border');
@@ -134,8 +174,17 @@ function borderPalette() {
     }
 }
 
-colorCircle.addEventListener('click', () => { hiddenColorCircle.click() });
+function changeBackGroundColor(event){
+    
+}
 // bodyLeft delegate : colorCircle, random, eraser, clear, colorsetting, border
+
+colorCircle.addEventListener('click', () => { hiddenColorCircle.click() });
+hiddenColorCircle.addEventListener('input', (event) => {
+    colorCircle.setAttribute('style', `background-color:${event.target.value}`);
+    selectedColor = event.target.value
+});
+
 bodyLeft.addEventListener('click', (event) => {
     let target = event.target;
     switch (target.id) {
@@ -153,3 +202,7 @@ bodyLeft.addEventListener('click', (event) => {
             break;
     }
 })
+
+// bodyLeft : background-color Setting colorSlider
+
+colorSlider.addEventListener('change',changeBackGroundColor);
