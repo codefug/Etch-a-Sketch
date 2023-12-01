@@ -23,7 +23,6 @@
 
 /* 전체 설정 */
 body{
-    background-color: rgba(201, 160, 160, 0.671);
     color: white;
     margin: 0;
     display:flex;

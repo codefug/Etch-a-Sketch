@@ -123,7 +123,6 @@ palette.addEventListener('mousedown', (event) => {
 
 palette.addEventListener('mouseup', () => {
     drawPalette = false;
-    console.log('mouseup')
 });
 palette.addEventListener('mouseover', (event) => {
     let target = event.target;
@@ -131,6 +130,7 @@ palette.addEventListener('mouseover', (event) => {
         palettehover(target);
     }
 })
+palette.addEventListener('mouseleave', (event)=>{drawPalette=false;});
 
 function palettehover(target) {
     if (!eraserSetting) {
@@ -175,7 +175,9 @@ function borderPalette() {
 }
 
 function changeBackGroundColor(event){
-    
+    console.log(event.target.value)
+    console.log('#'+(Number(event.target.value).toString(16)).padStart(6,'0'));
+    document.body.setAttribute('style',`background:#${(Number(event.target.value)).toString(16).padStart(6,'0')}`)
 }
 // bodyLeft delegate : colorCircle, random, eraser, clear, colorsetting, border
 
