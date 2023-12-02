@@ -134,7 +134,7 @@ palette.addEventListener('mouseleave', (event) => { drawPalette = false; });
 
 function palettehover(target) {
     if (!eraserSetting) {
-            target.style.backgroundColor = selectedColor;
+        target.style.backgroundColor = selectedColor;
     } else {
         target.style.backgroundColor = '';
     }

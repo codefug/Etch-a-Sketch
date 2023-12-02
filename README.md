@@ -46,19 +46,40 @@ CSS
 javaScript
 
 1. languagesetting
+    1-1. lanPack에 저장해서 인덱스를 통해서 설정
+    1-2. 어떤 언어를 선택했는지 인덱스를 지정한다.
 
-2. colorPicker
+2. set
+    2-1. promptFunction()은 변수 n에 prompt를 이용해 원하는 수를 담고 n를 리턴한다.
+    2-2. n==null 이면 그냥 return하게 하고 null이 아니면 받아온 형식을 *을 기준으로 나누기 위해서 .split('*')해준다.
+    2-3. n==NaN 이면 숫자가 아닌 것을 첫 인덱스로 한거기 때문에 경고창, 64넘어도 경고창
+    2-4. 모두 아닐 경우 newNode라는 클래스를 가진 div들을 그리드 방식으로 생성해준다.
+    2-5. 만들 때 border 버튼을 이미 누른 상태면 border를 생성해줘야한다.
+    2-6. 초기 상태였다면 random을 제외하고 disabled된 상태인 버튼들을 풀어줘야 한다.
 
-3. random
+3. palette
+    3-1. 화면 안에 들어가면 마우스를 클릭한 상태로 드래그하면 palette가 색칠되도록 해야한다.
+    3-2. drawPalette : 화면에서 나갔다가 다시 들어오는 경우, 필요한 boolean이다. 나갔다가 다시 들어올때 mousedown이 아님에도 mouseover 상태이기 때문에 그려지는 경우가 있었다. 따라서 mouseleave된다면 drawPalette를 false로 만들어서 위의 예외 상황을 처리한다.
+    3-3. palettehover : eraserSetting의 처리, 즉 eraser 버튼을 누른 상태인지 처리하는걸 함수 자체에서 한다. eraser면 없애는 것을 palette에 칠하고 아니면 선택된 전역 변수 selectedColor를 칠하는 함수가 된다.
 
-4. eraser
+4. randomColor
+    4-1. Math.random()은 0이상 1미만까지 랜덤으로 실수를 꺼낸다. 이를 이용해 최대값을 곱하고 Math.floor로 소수부분 짤라내면 내가 원하는 범위의 랜덤 수를 찾을 수 있다.
+    4-2. 이를 이용해 color들을 처리한다.
 
-5. clear
+5. eraserPalette
+    5-1. 버튼을 누르면 전역 변수를 바꾸고 이에 따라서 eraser버튼의 상태가 바뀌어야 한다.
 
-6. border
+6. clearPalette
+    6-1. palette 자체를 비우고 초기상태로 만들어야 한다. (버튼도 함께 처리)
 
-7. backgroundcolor
+7. borderPalette
+    7-1. palette를 전체 돌려서 border를 더해준다.
 
-8. palette
+8. changeBackGroundColor
+    8-1. body 전체에 selectedColor를 지정해줘야 한다.
 
-9. set
+9. colorCircle
+    9-1. hiddenColorCircle이라는 color picker에 colorCIrcle을 연결하여 click하면 켜질 수 있도록 해준다.
+
+10. bodyLeft
+    10-1. event delegate를 이용해 아래의 버튼들을 동시에 처리한다.
